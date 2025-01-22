@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdddiubm716bu"]
+
+[ext_resource type="PackedScene" uid="uid://c6ig6qydrhyu7" path="res://Prefabs/BoxSpawnner.tscn" id="1_hdg74"]
+[ext_resource type="PackedScene" uid="uid://wjqcc7omr4rn" path="res://Prefabs/Box.tscn" id="2_hry28"]
+[ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
+
+[node name="GameNode" type="Node2D"]
+position = Vector2(583, 342)
+
+[node name="Spawn" parent="." instance=ExtResource("1_hdg74")]
+position = Vector2(805, 572)
+box_scene = ExtResource("2_hry28")
+radius = 350.0
+box_width = 60.0
+
+[node name="PlayerNode" parent="." instance=ExtResource("3_heauh")]
+position = Vector2(571, 462)
