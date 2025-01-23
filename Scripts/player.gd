@@ -4,7 +4,7 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @export var speed: float = 200.0
 
 @export var bullet_scene: PackedScene  # Drag and drop the Bullet scene here
-@export var bullet_spawn_offset: Vector2 = Vector2(0, -10)  # Offset for bullet spawn point
+@export var bullet_spawn_offset: Vector2 = Vector2(0, 0)  # Offset for bullet spawn point
 
 
 func _process(delta: float) -> void:
