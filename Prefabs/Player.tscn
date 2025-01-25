@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://mqxnlf631dad"]
+[gd_scene load_steps=5 format=3 uid="uid://mqxnlf631dad"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_e23wc"]
 [ext_resource type="Texture2D" uid="uid://byu307smvmby3" path="res://Images/icon.svg" id="1_unjo6"]
-[ext_resource type="PackedScene" uid="uid://b23oivjfajxoy" path="res://Prefabs/Bullet.tscn" id="2_g2cd4"]
 [ext_resource type="Script" path="res://Scripts/CameraFollow.gd" id="3_apaky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lkqy"]
@@ -14,7 +13,6 @@ radius = 84.0536
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_e23wc")
-bullet_scene = ExtResource("2_g2cd4")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("1_unjo6")

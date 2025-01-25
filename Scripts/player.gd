@@ -2,9 +2,15 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 
 # Movement speed
 @export var speed: float = 200.0
+@export var bulletSpeed: float = 200.0
+@export var bulletDamage: float = 5.0
 
-@export var bullet_scene: PackedScene  # Drag and drop the Bullet scene here
-@export var bullet_spawn_offset: Vector2 = Vector2(0, 0)  # Offset for bullet spawn point
+var can_shoot = false
+@export var fireRate: float = 0.5
+
+
+var bullet_scene = preload("res://Prefabs/Bullet.tscn")
+var Bullet = "res://Scripts/Bullet.gd"
 
 
 func _process(delta: float) -> void:
@@ -24,12 +30,18 @@ func _process(delta: float) -> void:
 
 
 func fire_bullet(target_position: Vector2) -> void:
+	if can_shoot:
+		return  # Prevent shooting if the timer isn't ready
+	
+	can_shoot = true
+	
 	# Instance the bullet
 	var bullet = bullet_scene.instantiate()
+	bullet.initialize(bulletDamage,bulletSpeed)
 	get_tree().root.add_child(bullet)
 
 	# Set bullet position to player's position + offset
-	bullet.global_position = global_position + bullet_spawn_offset
+	bullet.global_position = global_position
 
 	# Calculate direction from player to mouse click
 	var direction = target_position - bullet.global_position
@@ -37,6 +49,9 @@ func fire_bullet(target_position: Vector2) -> void:
 	# Fire the bullet
 	bullet.fire(direction)
 	
+	await get_tree().create_timer(fireRate).timeout
+	can_shoot = false
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		fire_bullet(event.position)
