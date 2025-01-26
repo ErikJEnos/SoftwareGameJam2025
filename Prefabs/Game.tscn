@@ -11,7 +11,6 @@ position = Vector2(583, 342)
 position = Vector2(805, 572)
 box_scene = ExtResource("2_hry28")
 radius = 350.0
-box_width = 60.0
 
 [node name="PlayerNode" parent="." instance=ExtResource("3_heauh")]
 position = Vector2(571, 462)

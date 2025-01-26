@@ -2,7 +2,7 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 
 # Movement speed
 @export var speed: float = 200.0
-@export var bulletSpeed: float = 200.0
+@export var bulletSpeed: float = 300.0
 @export var bulletDamage: float = 5.0
 
 var can_shoot = false

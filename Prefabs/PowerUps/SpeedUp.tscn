@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsl5tls2p8n0c"]
+
+[ext_resource type="Script" path="res://Scripts/power_up.gd" id="1_yrvky"]
+[ext_resource type="Texture2D" uid="uid://b0c251serep7v" path="res://icon.svg" id="2_ovfw1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gfh7"]
+radius = 90.0
+
+[node name="SpeedUp" type="Node2D"]
+script = ExtResource("1_yrvky")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ovfw1")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CircleShape2D_0gfh7")

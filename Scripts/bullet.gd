@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var speed: float = 100.0  # Speed of the bullet
+@export var speed: float = 300.0  # Speed of the bullet
 @export var damage: float = 5.0  # damage of the bullet
 
 func initialize(_damage: float, _speed: float):

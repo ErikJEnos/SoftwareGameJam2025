@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://wjqcc7omr4rn"]
 
-[ext_resource type="Texture2D" uid="uid://byu307smvmby3" path="res://Images/icon.svg" id="1_3kumw"]
 [ext_resource type="Script" path="res://Prefabs/Wall.gd" id="1_i4rck"]
+[ext_resource type="Texture2D" uid="uid://coki3qeau44jh" path="res://Images/blockgreen.png" id="2_gay4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4yk"]
 size = Vector2(128, 128)
@@ -16,7 +16,8 @@ collision_mask = 3
 script = ExtResource("1_i4rck")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3kumw")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_gay4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ok4yk")

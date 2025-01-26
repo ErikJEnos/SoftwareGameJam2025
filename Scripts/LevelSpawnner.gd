@@ -7,7 +7,7 @@ extends Node2D
 
 @export var rows: int = 50
 # Width of each box
-@export var box_width: float = 20.0
+@export var box_width: float = 60.0
 
 func _ready():
 	var num_boxes = calculate_num_boxes(radius, box_width)
@@ -36,7 +36,7 @@ func spawn_boxes_in_circle(num_boxes: int):
 			
 			# Instance the box scene
 			var box = box_scene.instantiate()
-			box.position = position
+			box.global_position = position
 			
 			# Rotate the box to face the center
 			box.look_at(Vector2(0, 0))
