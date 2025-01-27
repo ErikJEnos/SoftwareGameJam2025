@@ -6,18 +6,6 @@ var allPowerUps = [
 	preload("res://Prefabs/PowerUps/BulletSpeedUp.tscn"),
 	preload("res://Prefabs/PowerUps/DamageUp.tscn"),
 	preload("res://Prefabs/PowerUps/FireRateUp.tscn"),
-	preload("res://Prefabs/PowerUps/SpeedUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
-	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
 ]
 
 
@@ -38,11 +26,13 @@ func RemoveHealth(damage: float) -> void:
 		queue_free()
 
 func _deferred_spawn_random_power_up():
-	var random = randi() % allPowerUps.size()
-	var power_up_scene = allPowerUps[random]
-	var power_up = power_up_scene.instantiate()
-	get_tree().root.add_child(power_up)
-	power_up.global_position = global_position
+	var random = randf_range(0, allPowerUps.size() + 30)
+	print("rad: ", random)
+	if(random <= allPowerUps.size()):
+		var power_up_scene = allPowerUps[random]
+		var power_up = power_up_scene.instantiate()
+		get_tree().root.add_child(power_up)
+		power_up.global_position = global_position
 
 func spawn_random_power_up():
 	# This is where you might be modifying a physics state like a collision shape
