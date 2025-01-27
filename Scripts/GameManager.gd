@@ -12,6 +12,8 @@ var box_scene = preload("res://Prefabs/Box.tscn")
 
 @export var eachLayer: Array = []
 
+var inProgress = false
+
 var levelCount = 0
 
 signal LevelFinished
@@ -28,10 +30,11 @@ func calculate_num_boxes(radius: float, box_width: float) -> int:
 	return ceil(circumference / box_width)
 
 func spawn_boxes_in_circle(num_boxes: int):
-	var test: int = 0
+	var rowCount: int = 0
 	for x in range(rows):
 		radius += rows
 		num_boxes = calculate_num_boxes(radius, box_width)
+		rowCount+=1
 		var eachRow = Array()
 		eachLayer.append(eachRow)
 		for i in range(num_boxes):
@@ -46,26 +49,35 @@ func spawn_boxes_in_circle(num_boxes: int):
 			# Instance the box scene
 			var box = box_scene.instantiate()
 			box.global_position = position
-			eachLayer[test].append(box)
+			
+			if(rowCount >= 10):
+				box.modulate = Color("0a71ff")
+				box.initialize(10.0)
+				
+			eachLayer[x].append(box)
 			
 			# Rotate the box to face the center
 			box.look_at(Vector2(0, 0))
 			
 			# Add the box as a child
 			add_child(box)
-		test += 1 
+
 		
 	print("How many rows ", eachLayer.size(), " : ", eachLayer[0].size(), " : ", eachLayer[0][0].name)
 
 
 func RemoveBlockFromCount() -> void :
 	BlockCount -= 1
-	if (BlockCount == 0):
+	if (BlockCount <= 0):
 		Test()
 		
 
 
 func Test():
+	
+	if(inProgress):
+		return
+	inProgress = true
 	
 	BlockCount = 10 
 	
@@ -78,3 +90,5 @@ func Test():
 			await get_tree().create_timer(0.1).timeout
 	
 	levelCount = levelCount + 1
+	inProgress = false
+	

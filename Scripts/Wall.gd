@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var health: float = 10.0
+@export var health: float = 5.0
 
 var allPowerUps = [
 	preload("res://Prefabs/PowerUps/BulletSpeedUp.tscn"),
@@ -19,6 +19,10 @@ var allPowerUps = [
 	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
 	preload("res://Prefabs/PowerUps/PowerUp.tscn"),
 ]
+
+
+func initialize(_health: float):
+	health = _health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
