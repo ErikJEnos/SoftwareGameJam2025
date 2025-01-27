@@ -7,6 +7,7 @@
 radius = 88.8889
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_ge6ho")
 speed = 200.0

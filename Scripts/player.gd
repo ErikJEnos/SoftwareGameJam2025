@@ -4,6 +4,9 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @export var speed: float = 200.0
 @export var bulletSpeed: float = 300.0
 @export var bulletDamage: float = 5.0
+@export var bulletCount: int = 1
+@export var spreadAngle: float = 30  
+
 
 var can_shoot = false
 @export var fireRate: float = 0.5
@@ -34,23 +37,30 @@ func _process(delta: float) -> void:
 
 func fire_bullet(target_position: Vector2) -> void:
 	if can_fire:
-		return  # Prevent shooting if the timer isn't ready
+		return 
 	
 	can_fire = true
-	
-	# Instance the bullet
-	var bullet = bullet_scene.instantiate()
-	bullet.initialize(bulletDamage,bulletSpeed)
-	get_tree().root.add_child(bullet)
 
-	# Set bullet position to player's position + offset
-	bullet.global_position = global_position
+	var angleStep = spreadAngle / max(1, bulletCount - 1)
+	var startAngle = -spreadAngle / 2  # Start at the leftmost angle
 
-	# Calculate direction from player to mouse click
-	var direction = target_position - bullet.global_position
 
-	# Fire the bullet
-	bullet.fire(direction)
+	for i in range(bulletCount):
+		# Instance each bullet
+		var bullet = bullet_scene.instantiate()
+		bullet.initialize(bulletDamage, bulletSpeed)
+		get_tree().root.add_child(bullet)
+
+		# Set bullet position to player's position
+		bullet.global_position = global_position
+
+		# Calculate the direction for the current bullet
+		var angle = deg_to_rad(startAngle + i * angleStep)
+		var direction = (target_position - bullet.global_position).normalized()
+		var rotated_direction = direction.rotated(angle)
+
+		# Fire the bullet with the adjusted direction
+		bullet.fire(rotated_direction)
 	
 	await get_tree().create_timer(fireRate).timeout
 	can_fire = false
@@ -66,7 +76,3 @@ func DamageUp(damageUp: float) -> void:
 func BulletSpeedUp(bulletSpeedUp: float) -> void:
 	print("BulletSpeed Increase Old: ", bulletSpeed, " New: ", bulletSpeed + bulletSpeedUp)
 	bulletSpeedUp += bulletSpeedUp
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		fire_bullet(event.position)
