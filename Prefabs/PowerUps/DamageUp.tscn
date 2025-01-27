@@ -1,19 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://g1flgwss31f3"]
 
-[ext_resource type="Script" path="res://Scripts/power_up.gd" id="1_k2jas"]
+[ext_resource type="Script" path="res://Scripts/damage_up.gd" id="1_7xbxk"]
 [ext_resource type="Texture2D" uid="uid://b0c251serep7v" path="res://icon.svg" id="2_1rq85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfh7"]
 radius = 90.0
 
 [node name="DamageUp" type="Node2D"]
-script = ExtResource("1_k2jas")
+script = ExtResource("1_7xbxk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_1rq85")
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 shape = SubResource("CircleShape2D_0gfh7")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

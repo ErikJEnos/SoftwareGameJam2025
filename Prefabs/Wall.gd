@@ -27,6 +27,7 @@ func _ready() -> void:
 func RemoveHealth(damage: float) -> void:
 	health -= damage
 	modulate = Color(0.5, 0.5, 0.5)
+	
 	if(health <= 0):
 		spawn_random_power_up()
 		queue_free()

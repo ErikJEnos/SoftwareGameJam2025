@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdddiubm716bu"]
+[gd_scene load_steps=7 format=3 uid="uid://cdddiubm716bu"]
 
 [ext_resource type="PackedScene" uid="uid://c6ig6qydrhyu7" path="res://Prefabs/BoxSpawnner.tscn" id="1_hdg74"]
 [ext_resource type="PackedScene" uid="uid://wjqcc7omr4rn" path="res://Prefabs/Box.tscn" id="2_hry28"]
 [ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
+[ext_resource type="PackedScene" uid="uid://bj675klwkk02r" path="res://Prefabs/PowerUps/FireRateUp.tscn" id="4_1fc4n"]
+[ext_resource type="PackedScene" uid="uid://g1flgwss31f3" path="res://Prefabs/PowerUps/DamageUp.tscn" id="5_o8vnx"]
+[ext_resource type="PackedScene" uid="uid://dj3sgys5ssens" path="res://Prefabs/PowerUps/BulletSpeedUp.tscn" id="6_x3ltu"]
 
 [node name="GameNode" type="Node2D"]
 position = Vector2(583, 342)
@@ -12,5 +15,14 @@ position = Vector2(805, 572)
 box_scene = ExtResource("2_hry28")
 radius = 350.0
 
-[node name="PlayerNode" parent="." instance=ExtResource("3_heauh")]
+[node name="Player" parent="." instance=ExtResource("3_heauh")]
 position = Vector2(571, 462)
+
+[node name="FireRateUp" parent="." instance=ExtResource("4_1fc4n")]
+position = Vector2(552, 569)
+
+[node name="DamageUp" parent="." instance=ExtResource("5_o8vnx")]
+position = Vector2(690, 558)
+
+[node name="BulletSpeedUp" parent="." instance=ExtResource("6_x3ltu")]
+position = Vector2(760, 450)

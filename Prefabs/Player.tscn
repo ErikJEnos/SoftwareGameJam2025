@@ -7,11 +7,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lkqy"]
 radius = 84.0536
 
-[node name="PlayerNode" type="Node2D"]
+[node name="Player" type="Node2D" groups=["Player"]]
+light_mask = 5
+visibility_layer = 5
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_e23wc")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
