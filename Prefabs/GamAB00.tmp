@@ -1,15 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdddiubm716bu"]
+[gd_scene load_steps=8 format=3 uid="uid://cdddiubm716bu"]
 
+[ext_resource type="PackedScene" uid="uid://c6ig6qydrhyu7" path="res://Prefabs/BoxSpawnner.tscn" id="1_hdg74"]
+[ext_resource type="PackedScene" uid="uid://wjqcc7omr4rn" path="res://Prefabs/Box.tscn" id="2_hry28"]
 [ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
 [ext_resource type="PackedScene" uid="uid://bj675klwkk02r" path="res://Prefabs/PowerUps/FireRateUp.tscn" id="4_1fc4n"]
 [ext_resource type="PackedScene" uid="uid://g1flgwss31f3" path="res://Prefabs/PowerUps/DamageUp.tscn" id="5_o8vnx"]
 [ext_resource type="PackedScene" uid="uid://dj3sgys5ssens" path="res://Prefabs/PowerUps/BulletSpeedUp.tscn" id="6_x3ltu"]
+[ext_resource type="PackedScene" uid="uid://c86jcvgdk2sit" path="res://Prefabs/GameManager.tscn" id="8_304jr"]
 
 [node name="GameNode" type="Node2D"]
 position = Vector2(583, 342)
 
+[node name="Spawn" parent="." instance=ExtResource("1_hdg74")]
+position = Vector2(805, 572)
+box_scene = ExtResource("2_hry28")
+radius = 350.0
+
 [node name="Player" parent="." instance=ExtResource("3_heauh")]
-position = Vector2(-587, -342)
+position = Vector2(801, 573)
 
 [node name="FireRateUp" parent="." instance=ExtResource("4_1fc4n")]
 position = Vector2(552, 569)
@@ -19,3 +27,7 @@ position = Vector2(690, 558)
 
 [node name="BulletSpeedUp" parent="." instance=ExtResource("6_x3ltu")]
 position = Vector2(760, 450)
+
+[node name="GameManager" parent="." instance=ExtResource("8_304jr")]
+
+[connection signal="LevelFinished" from="GameManager" to="Spawn" method="_on_game_manager_level_finished"]

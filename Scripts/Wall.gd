@@ -29,6 +29,7 @@ func RemoveHealth(damage: float) -> void:
 	modulate = Color(0.5, 0.5, 0.5)
 	
 	if(health <= 0):
+		GameManager.RemoveBlockFromCount()
 		spawn_random_power_up()
 		queue_free()
 
@@ -38,7 +39,6 @@ func _deferred_spawn_random_power_up():
 	var power_up = power_up_scene.instantiate()
 	get_tree().root.add_child(power_up)
 	power_up.global_position = global_position
-	print("Power up dropped", power_up, power_up.position)
 
 func spawn_random_power_up():
 	# This is where you might be modifying a physics state like a collision shape

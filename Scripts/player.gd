@@ -2,8 +2,9 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 
 # Movement speed
 @export var speed: float = 200.0
-@export var bulletSpeed: float = 300.0
+@export var bulletSpeed: float = 1000.0
 @export var bulletDamage: float = 5.0
+@export var bounceCount: int = 2
 @export var bulletCount: int = 1
 @export var spreadAngle: float = 30  
 
@@ -24,7 +25,6 @@ func _process(delta: float) -> void:
 	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
 	if Input.is_action_pressed("fire"):  # Replace "fire" with your custom action
-		print("Fire")
 		fire_bullet(get_global_mouse_position())
 	
 	# Normalize to ensure consistent speed in all directions
@@ -48,7 +48,7 @@ func fire_bullet(target_position: Vector2) -> void:
 	for i in range(bulletCount):
 		# Instance each bullet
 		var bullet = bullet_scene.instantiate()
-		bullet.initialize(bulletDamage, bulletSpeed)
+		bullet.initialize(bulletDamage, bulletSpeed, bounceCount)
 		get_tree().root.add_child(bullet)
 
 		# Set bullet position to player's position
