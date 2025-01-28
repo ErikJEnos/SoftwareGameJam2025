@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjd31jop4elg2"
+path="res://.godot/imported/hurricane shot.wav-27b3e363445d28bff5076513ac3091cf.sample"
+
+[deps]
+
+source_file="res://Audio/hurricane shot.wav"
+dest_files=["res://.godot/imported/hurricane shot.wav-27b3e363445d28bff5076513ac3091cf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
