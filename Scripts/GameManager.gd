@@ -130,6 +130,9 @@ func Test():
 			if(eachLayer[levelCount][i] != null):
 				eachLayer[levelCount][i].Flash()
 		BossIntroFlashing()
+	if(levelCount == 8):
+		var upgradePanel = get_node("/root/GameNode/UpgradePanel")
+		upgradePanel.visible  = true
 	
 	inProgress = false
 	

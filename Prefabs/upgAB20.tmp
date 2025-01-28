@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://reima7vk52fy"]
+
+[ext_resource type="Script" path="res://UpgradePanel.gd" id="1_1ave4"]
+
+[node name="UpgradePanel" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 860.0
+offset_bottom = 362.0
+script = ExtResource("1_1ave4")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 91.0
+offset_right = 223.0
+offset_bottom = 249.0
+
+[node name="Button" type="Button" parent="Panel/Button"]
+offset_left = 269.0
+offset_top = 3.0
+offset_right = 433.0
+offset_bottom = 161.0
+
+[node name="Button" type="Button" parent="Panel/Button/Button"]
+offset_left = 308.0
+offset_top = 3.0
+offset_right = 472.0
+offset_bottom = 161.0
+
+[connection signal="pressed" from="Panel/Button" to="Panel" method="_on_button1_pressed"]

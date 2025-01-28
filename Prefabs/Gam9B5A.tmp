@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdddiubm716bu"]
+
+[ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
+[ext_resource type="PackedScene" uid="uid://bj675klwkk02r" path="res://Prefabs/PowerUps/FireRateUp.tscn" id="4_1fc4n"]
+[ext_resource type="Script" path="res://Prefabs/UpgradePanel.gd" id="5_bgrfx"]
+[ext_resource type="PackedScene" uid="uid://g1flgwss31f3" path="res://Prefabs/PowerUps/DamageUp.tscn" id="5_o8vnx"]
+[ext_resource type="Texture2D" uid="uid://bdmjddvruer7n" path="res://Images/bullet count up.png" id="5_xmyor"]
+[ext_resource type="Texture2D" uid="uid://dfj0rvbiw51qb" path="res://Images/bullet_speed_up.png" id="6_bdutk"]
+[ext_resource type="PackedScene" uid="uid://dj3sgys5ssens" path="res://Prefabs/PowerUps/BulletSpeedUp.tscn" id="6_x3ltu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_abd1t"]
+font_size = 48
+
+[node name="GameNode" type="Node2D"]
+position = Vector2(583, 342)
+
+[node name="Player" parent="." instance=ExtResource("3_heauh")]
+position = Vector2(-587, -342)
+
+[node name="FireRateUp" parent="." instance=ExtResource("4_1fc4n")]
+position = Vector2(552, 569)
+
+[node name="DamageUp" parent="." instance=ExtResource("5_o8vnx")]
+position = Vector2(690, 558)
+
+[node name="BulletSpeedUp" parent="." instance=ExtResource("6_x3ltu")]
+position = Vector2(760, 450)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -840.0
+offset_top = -605.0
+offset_right = -324.0
+offset_bottom = -518.0
+label_settings = SubResource("LabelSettings_abd1t")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -1025.0
+offset_top = -551.0
+offset_right = -141.0
+offset_bottom = -163.0
+script = ExtResource("5_bgrfx")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.191
+anchor_top = 0.531
+anchor_right = 0.191
+anchor_bottom = 0.531
+offset_left = -98.844
+offset_top = -99.028
+offset_right = 101.156
+offset_bottom = 100.972
+icon = ExtResource("5_xmyor")
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.541
+anchor_right = 0.5
+anchor_bottom = 0.541
+offset_left = -97.0
+offset_top = -106.908
+offset_right = 103.0
+offset_bottom = 93.092
+icon = ExtResource("5_xmyor")
+
+[node name="Button3" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.82
+anchor_top = 0.51
+anchor_right = 0.82
+anchor_bottom = 0.51
+offset_left = -108.88
+offset_top = -93.88
+offset_right = 91.1199
+offset_bottom = 106.12
+icon = ExtResource("6_bdutk")

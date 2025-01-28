@@ -47,7 +47,6 @@ func fire_bullet(target_position: Vector2) -> void:
 	for i in range(bulletCount):
 		# Instance each bullet
 		var bullet = bullet_scene.instantiate()
-		print("Bullet count " )
 		bullet.initialize(bulletDamage, bulletSpeed, bounceCount)
 		get_tree().root.add_child(bullet)
 
@@ -65,18 +64,26 @@ func fire_bullet(target_position: Vector2) -> void:
 	await get_tree().create_timer(fireRate).timeout
 	can_fire = false
 
-func FireRateUp(rateUp: float) -> void:
+func FireRateUp(rateUp: float = 0.90) -> void:
 	print("FireRate Increase Old: ", fireRate, " New: ", fireRate * rateUp)
 	fireRate *= rateUp
 	fireRate = fireRate/1
 
-func DamageUp(damageUp: float) -> void:
+func DamageUp(damageUp: float = 0.2) -> void:
 	print("BulletDamage Increase Old: ", bulletDamage, " New: ", bulletDamage + damageUp)
 	bulletDamage += damageUp
 
-func BulletSpeedUp(bulletSpeedUp: float) -> void:
+func BulletSpeedUp(bulletSpeedUp: float = 1.05) -> void:
 	print("BulletSpeed Increase Old: ", bulletSpeed, " New: ", bulletSpeed * bulletSpeedUp)
 	bulletSpeed *= bulletSpeedUp
+
+func BounceUp() -> void:
+	print("Working")
+	bounceCount+=1 
+	
+func BulletCountUp() -> void:
+	print("Working")
+	bulletCount+=1 
 
 func RemovePlayerHealth(damage: float):
 	health -= damage
