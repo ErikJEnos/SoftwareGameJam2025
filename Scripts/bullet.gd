@@ -6,6 +6,8 @@ extends RigidBody2D
 
 var collided_bodies: Array = []
 
+@onready var animation = $AnimationPlayer
+
 func initialize(_damage: float, _speed: float, _bounceCount: int):
 	speed = _speed
 	damage = _damage
@@ -28,5 +30,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		# If bounceCount reaches zero, remove the bullet
 		if bounceCount <= 0:
-			queue_free()
+			linear_velocity = Vector2(0,0)* speed
+			animation.play("BulletDestroyed")
 			

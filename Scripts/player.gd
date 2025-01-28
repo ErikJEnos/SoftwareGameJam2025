@@ -5,7 +5,7 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @export var bulletSpeed: float = 1000.0
 @export var bulletDamage: float = 5.0
 @export var bounceCount: int = 2
-@export var bulletCount: int = 9
+@export var bulletCount: int = 1
 @export var spreadAngle: float = 30  
 @export var health: float = 5  
 

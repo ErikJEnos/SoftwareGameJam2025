@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://wjqcc7omr4rn"]
+[gd_scene load_steps=7 format=3 uid="uid://wjqcc7omr4rn"]
 
 [ext_resource type="Script" path="res://Scripts/Wall.gd" id="1_i4rck"]
 [ext_resource type="Texture2D" uid="uid://duxu0fychpwkw" path="res://Images/whiteblock.png" id="2_icw2y"]
@@ -8,6 +8,14 @@ size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v154"]
 size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_y347j"]
+resource_name = "Destroyed"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25ndd"]
+_data = {
+"Destroyed": SubResource("Animation_y347j")
+}
 
 [node name="Wall" type="StaticBody2D" groups=["Wall"]]
 collision_layer = 3
@@ -27,3 +35,8 @@ scale = Vector2(0.4, 0.4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_7v154")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_25ndd")
+}
