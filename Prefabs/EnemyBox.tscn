@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://pircjc1i3jy5"]
+[gd_scene load_steps=9 format=3 uid="uid://pircjc1i3jy5"]
 
 [ext_resource type="Script" path="res://Scripts/Wall.gd" id="1_n7v64"]
-[ext_resource type="Texture2D" uid="uid://h162foiefodt" path="res://Images/blockboss.png" id="2_k20tk"]
+[ext_resource type="Texture2D" uid="uid://dkmend0e6f60c" path="res://Images/bossblockdestroyed-sheet.png" id="2_0kd3w"]
 [ext_resource type="Texture2D" uid="uid://ubpqmdrcnmob" path="res://Images/white_circle.png" id="3_4q43p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4yk"]
@@ -10,6 +10,56 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v154"]
 size = Vector2(128, 128)
 
+[sub_resource type="Animation" id="Animation_a3bfu"]
+resource_name = "BossDestroyed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5xwrd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bwo3"]
+_data = {
+"BossDestroyed": SubResource("Animation_a3bfu"),
+"RESET": SubResource("Animation_5xwrd")
+}
+
 [node name="Wall" type="StaticBody2D" groups=["Wall"]]
 collision_layer = 3
 collision_mask = 3
@@ -17,7 +67,8 @@ script = ExtResource("1_n7v64")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_k20tk")
+texture = ExtResource("2_0kd3w")
+hframes = 6
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
@@ -33,3 +84,8 @@ scale = Vector2(0.4, 0.4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_7v154")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7bwo3")
+}

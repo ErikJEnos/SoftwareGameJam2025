@@ -34,7 +34,7 @@ func calculate_num_boxes(radius: float, box_width: float) -> int:
 	return ceil(circumference / box_width)
 
 func spawn_boxes_in_circle():
-	SpawnBlocks(5, 20,"78dc10")
+	SpawnBlocks(5, 6,"b1ffae")
 	SpawnEnemyBlocks(3, 15)
 	SpawnBlocks(5, 10, "1f51ff")
 	SpawnEnemyBlocks(3, 15)
@@ -119,7 +119,7 @@ func Test():
 	
 	for i in range(eachLayer[levelCount].size()):
 		if(eachLayer[levelCount][i] != null):
-			eachLayer[levelCount][i].queue_free()
+			eachLayer[levelCount][i].PlayAnimation()
 			
 			await get_tree().create_timer(0.1).timeout
 	
@@ -133,6 +133,8 @@ func Test():
 	if(levelCount == 8):
 		var upgradePanel = get_node("/root/GameNode/UpgradePanel")
 		upgradePanel.visible  = true
+	if(levelCount == 13):
+		get_node("/root/GameNode/WarningCircle").Flashing()
 	
 	inProgress = false
 	

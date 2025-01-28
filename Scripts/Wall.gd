@@ -6,6 +6,7 @@ extends StaticBody2D
 var canTakeDamage = true
 
 @onready var damagedBlock = $SpriteDamage
+@onready var animation = $AnimationPlayer
 
 var enemyBullet = preload("res://Prefabs/EnemyBullet.tscn")
 
@@ -29,10 +30,11 @@ func _ready() -> void:
 func RemoveHealth(damage: float) -> void:
 	if(canTakeDamage):
 		health -= damage
-		#modulate = Color(0.5, 0.5, 0.5)
+
 
 		if(isEnemy):
 			ShootAtPlayer()
+			modulate = Color(0.5, 0.5, 0.5)
 		else:
 			damagedBlock.visible = true
 			GetHealthPer()
@@ -41,7 +43,7 @@ func RemoveHealth(damage: float) -> void:
 		if(health <= 0):
 			GameManager.RemoveBlockFromCount()
 			spawn_random_power_up()
-			queue_free()
+			PlayAnimation()
 
 func _deferred_spawn_random_power_up():
 	var random = randf_range(0, allPowerUps.size() + 30)
@@ -86,3 +88,9 @@ func GetHealthPer():
 		$SpriteDamage.frame = 1
 	elif(percent < 45):
 		$SpriteDamage.frame = 2
+
+func PlayAnimation(): 
+	if(not isEnemy):
+		animation.play("Destroyed")
+	else:
+		animation.play("BossDestroyed")
