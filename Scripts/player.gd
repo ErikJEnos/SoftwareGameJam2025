@@ -8,6 +8,8 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @export var bulletCount: int = 9
 @export var spreadAngle: float = 30  
 @export var health: float = 5  
+@onready var shoot: AudioStreamPlayer = $"../shoot"
+@onready var playerhit: AudioStreamPlayer = $"../playerhit"
 
 var can_shoot = false
 @export var fireRate: float = 0.5

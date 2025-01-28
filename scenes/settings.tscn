@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjuj1fh2t0xkt"]
+[gd_scene load_steps=4 format=3 uid="uid://cjuj1fh2t0xkt"]
 
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="1_cqqlb"]
+[ext_resource type="Texture2D" uid="uid://bhmlx1gl886s5" path="res://Sprites/button.png" id="2_yxliv"]
+[ext_resource type="Texture2D" uid="uid://bidc55f52muga" path="res://Sprites/j1vql5h66qi51.jpg" id="3_ahapy"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -56,21 +58,37 @@ text = "Sound Effects Volume
 [node name="SFXSlider" type="HSlider" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="Fullscreen" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 1
-
-[node name="fullscrene" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Full Screen"
-
-[node name="fullscreenCheck" type="CheckButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+text = "Full Screen
+"
 
 [node name="main menu" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu
 "
 
-[connection signal="toggled" from="HBoxContainer/VBoxContainer/HBoxContainer/fullscreenCheck" to="." method="_on_fullscreen_check_toggled"]
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 1079.0
+offset_top = 606.0
+offset_right = 1087.0
+offset_bottom = 614.0
+scale = Vector2(0.447973, 0.272658)
+icon = ExtResource("2_yxliv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 203.0
+offset_top = 8.0
+offset_right = 815.0
+offset_bottom = 465.0
+scale = Vector2(1.34559, 1.38908)
+texture = ExtResource("3_ahapy")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

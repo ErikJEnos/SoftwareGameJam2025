@@ -45,10 +45,6 @@ scale = Vector2(2, 2)
 [node name="Enemy" parent="." instance=ExtResource("6_4tlp6")]
 position = Vector2(-495, -356)
 
-[node name="shoot" type="AudioStreamPlayer" parent="."]
-
-[node name="playerhit" type="AudioStreamPlayer" parent="."]
-
 [node name="blockhit" type="AudioStreamPlayer" parent="."]
 
 [node name="blockbreak" type="AudioStreamPlayer" parent="."]
