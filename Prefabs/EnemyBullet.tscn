@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://byq30x037w7ke"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_bullet.gd" id="1_33f75"]
+[ext_resource type="Texture2D" uid="uid://byu307smvmby3" path="res://Images/icon.svg" id="2_r457m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tpoik"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u26oe"]
+radius = 30.104
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_tpoik")
+gravity_scale = 0.0
+script = ExtResource("1_33f75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.4, 0.4)
+shape = SubResource("CircleShape2D_u26oe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0627451, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_r457m")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CircleShape2D_u26oe")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

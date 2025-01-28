@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://wjqcc7omr4rn"]
+[gd_scene load_steps=5 format=3 uid="uid://pircjc1i3jy5"]
 
-[ext_resource type="Script" path="res://Scripts/Wall.gd" id="1_i4rck"]
-[ext_resource type="Texture2D" uid="uid://duxu0fychpwkw" path="res://Images/whiteblock.png" id="2_icw2y"]
+[ext_resource type="Script" path="res://Scripts/Wall.gd" id="1_n7v64"]
+[ext_resource type="Texture2D" uid="uid://h162foiefodt" path="res://Images/blockboss.png" id="2_k20tk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4yk"]
 size = Vector2(128, 128)
@@ -12,11 +12,11 @@ size = Vector2(128, 128)
 [node name="Wall" type="StaticBody2D" groups=["Wall"]]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_i4rck")
+script = ExtResource("1_n7v64")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_icw2y")
+texture = ExtResource("2_k20tk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.4, 0.4)

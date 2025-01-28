@@ -1,8 +1,10 @@
 extends Node2D
 
-@export var BlockCount: int = 2
+@export var BlockCount: int = 10
 
 var box_scene = preload("res://Prefabs/Box.tscn")
+
+var enemyBox = preload("res://Prefabs/EnemyBox.tscn")
 
 @export var radius: float = 100.0
 
@@ -16,11 +18,13 @@ var inProgress = false
 
 var levelCount = 0
 
+var num_boxes
+var rowCount: int = 0
 signal LevelFinished
 
 func _ready() -> void:
-	var num_boxes = calculate_num_boxes(radius, box_width)
-	spawn_boxes_in_circle(num_boxes)
+	num_boxes = calculate_num_boxes(radius, box_width)
+	spawn_boxes_in_circle()
 
 
 func calculate_num_boxes(radius: float, box_width: float) -> int:
@@ -29,12 +33,22 @@ func calculate_num_boxes(radius: float, box_width: float) -> int:
 	# Calculate the number of boxes needed
 	return ceil(circumference / box_width)
 
-func spawn_boxes_in_circle(num_boxes: int):
-	var rowCount: int = 0
-	for x in range(rows):
+func spawn_boxes_in_circle():
+	SpawnBlocks(5, 5,"78dc10")
+	SpawnEnemyBlocks(3, 15)
+	SpawnBlocks(5, 10, "1f51ff")
+	SpawnEnemyBlocks(3, 15)
+
+
+func RemoveBlockFromCount() -> void :
+	BlockCount -= 1
+	if (BlockCount <= 0):
+		Test()
+		
+func SpawnBlocks(_rows: int = 5, health: int = 5, _color: Color = "ffffff"):
+	for x in range(_rows):
 		radius += rows
 		num_boxes = calculate_num_boxes(radius, box_width)
-		rowCount+=1
 		var eachRow = Array()
 		eachLayer.append(eachRow)
 		for i in range(num_boxes):
@@ -46,32 +60,52 @@ func spawn_boxes_in_circle(num_boxes: int):
 			var pos_y = radius * sin(angle)
 			var position = Vector2(pos_x, pos_y)
 			
-			# Instance the box scene
-			var box = box_scene.instantiate()
+			var spawnRandomEnemy = randf_range(0, 30)
+			var box
+
+			box = box_scene.instantiate()
 			box.global_position = position
-			
-			if(rowCount >= 10):
-				box.modulate = Color("0a71ff")
-				box.initialize(10.0)
+			box.initialize(health, false, _color)
 				
-			eachLayer[x].append(box)
+			eachLayer[rowCount].append(box)
+			# Rotate the box to face the center
+			box.look_at(Vector2(0, 0))
+			
+			# Add the box as a child
+			add_child(box)
+		rowCount+=1
+
+func SpawnEnemyBlocks(_rows: int = 5, health: int = 5, _color: Color = "ffffff"): 
+	for x in range(_rows):
+		print(x)
+		radius += rows
+		num_boxes = calculate_num_boxes(radius, box_width)
+		var eachRow = Array()
+		eachLayer.append(eachRow)
+		for i in range(num_boxes):
+			# Calculate the angle for this box (in radians)
+			var angle = i * TAU / num_boxes
+			
+			# Calculate the position of the box
+			var pos_x = radius * cos(angle)
+			var pos_y = radius * sin(angle)
+			var position = Vector2(pos_x, pos_y)
+
+			var box = enemyBox.instantiate()
+			box.global_position = position
+			box.initialize(health, true, _color)
+				
+			eachLayer[rowCount].append(box)
 			
 			# Rotate the box to face the center
 			box.look_at(Vector2(0, 0))
 			
 			# Add the box as a child
 			add_child(box)
-
-		
-	print("How many rows ", eachLayer.size(), " : ", eachLayer[0].size(), " : ", eachLayer[0][0].name)
-
-
-func RemoveBlockFromCount() -> void :
-	BlockCount -= 1
-	if (BlockCount <= 0):
-		Test()
-		
-
+		if(x == _rows-1):
+			SpawnBlocks(1,100000,"000000")
+		rowCount+=1
+	pass
 
 func Test():
 	

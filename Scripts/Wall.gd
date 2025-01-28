@@ -1,6 +1,8 @@
 extends StaticBody2D
 
 @export var health: float = 5.0
+@export var isEnemy: = false
+var enemyBullet = preload("res://Prefabs/EnemyBullet.tscn")
 
 var allPowerUps = [
 	preload("res://Prefabs/PowerUps/BulletSpeedUp.tscn"),
@@ -9,8 +11,10 @@ var allPowerUps = [
 ]
 
 
-func initialize(_health: float):
+func initialize(_health: float, _isEnemy: bool, _Color: Color):
 	health = _health
+	isEnemy = _isEnemy
+	modulate = _Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +24,10 @@ func RemoveHealth(damage: float) -> void:
 	health -= damage
 	modulate = Color(0.5, 0.5, 0.5)
 	
+	if(isEnemy):
+		ShootAtPlayer()
+		
+	
 	if(health <= 0):
 		GameManager.RemoveBlockFromCount()
 		spawn_random_power_up()
@@ -27,7 +35,6 @@ func RemoveHealth(damage: float) -> void:
 
 func _deferred_spawn_random_power_up():
 	var random = randf_range(0, allPowerUps.size() + 30)
-	print("rad: ", random)
 	if(random <= allPowerUps.size()):
 		var power_up_scene = allPowerUps[random]
 		var power_up = power_up_scene.instantiate()
@@ -37,3 +44,16 @@ func _deferred_spawn_random_power_up():
 func spawn_random_power_up():
 	# This is where you might be modifying a physics state like a collision shape
 	call_deferred("_deferred_spawn_random_power_up")
+	
+func ShootAtPlayer():
+	var bullet = enemyBullet.instantiate()
+	bullet.initialize(1, 300)
+	get_tree().root.add_child(bullet)
+
+	# Set bullet position to player's position
+	bullet.global_position = global_position
+	var player = get_node("/root/GameNode/Player")
+	var direction = (player.global_position - bullet.global_position).normalized()
+
+	# Fire the bullet with the adjusted direction
+	bullet.fire(direction)
