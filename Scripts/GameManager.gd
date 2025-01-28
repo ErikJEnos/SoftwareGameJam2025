@@ -34,7 +34,7 @@ func calculate_num_boxes(radius: float, box_width: float) -> int:
 	return ceil(circumference / box_width)
 
 func spawn_boxes_in_circle():
-	SpawnBlocks(5, 5,"78dc10")
+	SpawnBlocks(5, 20,"78dc10")
 	SpawnEnemyBlocks(3, 15)
 	SpawnBlocks(5, 10, "1f51ff")
 	SpawnEnemyBlocks(3, 15)

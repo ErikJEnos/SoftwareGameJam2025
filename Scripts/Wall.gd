@@ -1,8 +1,11 @@
 extends StaticBody2D
 
 @export var health: float = 5.0
+@export var maxHealth: float = 5.0
 @export var isEnemy: = false
 var canTakeDamage = true
+
+@onready var damagedBlock = $SpriteDamage
 
 var enemyBullet = preload("res://Prefabs/EnemyBullet.tscn")
 
@@ -15,6 +18,7 @@ var allPowerUps = [
 
 func initialize(_health: float, _isEnemy: bool, _Color: Color):
 	health = _health
+	maxHealth = _health
 	isEnemy = _isEnemy
 	modulate = _Color
 
@@ -25,10 +29,13 @@ func _ready() -> void:
 func RemoveHealth(damage: float) -> void:
 	if(canTakeDamage):
 		health -= damage
-		modulate = Color(0.5, 0.5, 0.5)
+		#modulate = Color(0.5, 0.5, 0.5)
 
 		if(isEnemy):
 			ShootAtPlayer()
+		else:
+			damagedBlock.visible = true
+			GetHealthPer()
 			
 
 		if(health <= 0):
@@ -70,3 +77,12 @@ func Flash():
 			await get_tree().create_timer(0.1).timeout
 		canTakeDamage = true
 	pass 
+
+func GetHealthPer():
+	var percent = (health / maxHealth) * 100.0
+	if(percent >= 75):
+		$SpriteDamage.frame = 0
+	elif(percent <= 75 && percent >= 50):
+		$SpriteDamage.frame = 1
+	elif(percent < 45):
+		$SpriteDamage.frame = 2

@@ -8,7 +8,7 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u26oe"]
-radius = 30.104
+radius = 25.2212
 
 [sub_resource type="Animation" id="Animation_8cut7"]
 resource_name = "BulletDestroyed"
@@ -92,14 +92,15 @@ texture = ExtResource("2_5xm7o")
 hframes = 6
 frame = 1
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-shape = SubResource("CircleShape2D_u26oe")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_vakfg")
 }
 
-[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.6, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u26oe")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

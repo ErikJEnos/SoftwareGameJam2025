@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://wjqcc7omr4rn"]
+[gd_scene load_steps=8 format=3 uid="uid://wjqcc7omr4rn"]
 
 [ext_resource type="Script" path="res://Scripts/Wall.gd" id="1_i4rck"]
 [ext_resource type="Texture2D" uid="uid://duxu0fychpwkw" path="res://Images/whiteblock.png" id="2_icw2y"]
+[ext_resource type="Texture2D" uid="uid://c23x0sfv0q2j2" path="res://Images/blockdurability.png" id="3_783yb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4yk"]
-size = Vector2(128, 128)
+size = Vector2(112, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v154"]
 size = Vector2(128, 128)
@@ -26,8 +27,14 @@ script = ExtResource("1_i4rck")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_icw2y")
 
+[node name="SpriteDamage" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_783yb")
+hframes = 3
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ok4yk")
 
 [node name="Area2D" type="Area2D" parent="."]

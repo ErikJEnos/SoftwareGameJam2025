@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://byq30x037w7ke"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_bullet.gd" id="1_33f75"]
-[ext_resource type="Texture2D" uid="uid://byu307smvmby3" path="res://Images/icon.svg" id="2_r457m"]
+[ext_resource type="Texture2D" uid="uid://bm3au2bipvpvs" path="res://Images/enemy projectile.png" id="2_1wjtn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tpoik"]
 friction = 0.0
@@ -23,9 +23,9 @@ scale = Vector2(0.4, 0.4)
 shape = SubResource("CircleShape2D_u26oe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.0627451, 0, 1)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_r457m")
+texture = ExtResource("2_1wjtn")
+hframes = 5
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
 
