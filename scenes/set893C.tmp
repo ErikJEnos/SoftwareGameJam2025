@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjuj1fh2t0xkt"]
+
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_cqqlb"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cqqlb")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 129.0
+offset_right = 326.0
+offset_bottom = 199.0
+
+[node name="Vslider" type="Label" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 81.0
+offset_right = 236.0
+offset_bottom = 104.0
+text = "Volume"
+
+[node name="fullscrene" type="Label" parent="."]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 225.0
+offset_right = 304.0
+offset_bottom = 248.0
+text = "Full Screen"
+
+[node name="fullscreenCheck" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 271.0
+offset_right = 271.0
+offset_bottom = 295.0
+
+[node name="main menu" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="toggled" from="fullscreenCheck" to="." method="_on_fullscreen_check_toggled"]
+[connection signal="pressed" from="main menu" to="." method="_on_main_menu_pressed"]
