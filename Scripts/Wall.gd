@@ -2,6 +2,8 @@ extends StaticBody2D
 
 @export var health: float = 5.0
 @export var isEnemy: = false
+var canTakeDamage = true
+
 var enemyBullet = preload("res://Prefabs/EnemyBullet.tscn")
 
 var allPowerUps = [
@@ -21,17 +23,18 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func RemoveHealth(damage: float) -> void:
-	health -= damage
-	modulate = Color(0.5, 0.5, 0.5)
-	
-	if(isEnemy):
-		ShootAtPlayer()
-		
-	
-	if(health <= 0):
-		GameManager.RemoveBlockFromCount()
-		spawn_random_power_up()
-		queue_free()
+	if(canTakeDamage):
+		health -= damage
+		modulate = Color(0.5, 0.5, 0.5)
+
+		if(isEnemy):
+			ShootAtPlayer()
+			
+
+		if(health <= 0):
+			GameManager.RemoveBlockFromCount()
+			spawn_random_power_up()
+			queue_free()
 
 func _deferred_spawn_random_power_up():
 	var random = randf_range(0, allPowerUps.size() + 30)
@@ -57,3 +60,13 @@ func ShootAtPlayer():
 
 	# Fire the bullet with the adjusted direction
 	bullet.fire(direction)
+
+func Flash():
+	if($Sprite2D2 != null):
+		for i in range(10):
+			$Sprite2D2.visible = true
+			await get_tree().create_timer(0.1).timeout
+			$Sprite2D2.visible = false
+			await get_tree().create_timer(0.1).timeout
+		canTakeDamage = true
+	pass 

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var BlockCount: int = 10
+@export var BlockCount: int = 20
 
 var box_scene = preload("res://Prefabs/Box.tscn")
 
@@ -94,7 +94,7 @@ func SpawnEnemyBlocks(_rows: int = 5, health: int = 5, _color: Color = "ffffff")
 			var box = enemyBox.instantiate()
 			box.global_position = position
 			box.initialize(health, true, _color)
-				
+			box.canTakeDamage = false
 			eachLayer[rowCount].append(box)
 			
 			# Rotate the box to face the center
@@ -124,5 +124,16 @@ func Test():
 			await get_tree().create_timer(0.1).timeout
 	
 	levelCount = levelCount + 1
+	
+	if(levelCount >= 5):
+		for i in range(eachLayer[levelCount].size()):
+			if(eachLayer[levelCount][i] != null):
+				eachLayer[levelCount][i].Flash()
+		BossIntroFlashing()
+	
 	inProgress = false
 	
+func BossIntroFlashing():
+	var _text = get_node("/root/GameNode/Label")
+	_text.text = "Boss Time"
+	pass

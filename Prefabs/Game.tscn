@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdddiubm716bu"]
+[gd_scene load_steps=6 format=3 uid="uid://cdddiubm716bu"]
 
 [ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
 [ext_resource type="PackedScene" uid="uid://bj675klwkk02r" path="res://Prefabs/PowerUps/FireRateUp.tscn" id="4_1fc4n"]
 [ext_resource type="PackedScene" uid="uid://g1flgwss31f3" path="res://Prefabs/PowerUps/DamageUp.tscn" id="5_o8vnx"]
 [ext_resource type="PackedScene" uid="uid://dj3sgys5ssens" path="res://Prefabs/PowerUps/BulletSpeedUp.tscn" id="6_x3ltu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_abd1t"]
+font_size = 48
 
 [node name="GameNode" type="Node2D"]
 position = Vector2(583, 342)
@@ -19,3 +22,12 @@ position = Vector2(690, 558)
 
 [node name="BulletSpeedUp" parent="." instance=ExtResource("6_x3ltu")]
 position = Vector2(760, 450)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -840.0
+offset_top = -605.0
+offset_right = -324.0
+offset_bottom = -518.0
+label_settings = SubResource("LabelSettings_abd1t")
+horizontal_alignment = 1
+uppercase = true
