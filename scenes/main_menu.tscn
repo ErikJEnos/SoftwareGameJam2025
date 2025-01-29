@@ -6,13 +6,19 @@
 [ext_resource type="AudioStream" uid="uid://dd63i40m13wwf" path="res://Audio/hurricanemenu.mp3" id="4_bmcgm"]
 
 [node name="MainMenu" type="Control"]
+custom_minimum_size = Vector2(1156, 0)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_6hteg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 0.5
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 custom_minimum_size = Vector2(1156, 648)
@@ -20,11 +26,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="background" type="TextureRect" parent="CanvasLayer/Control"]
 self_modulate = Color(0.6, 0.478431, 0.8, 1)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 1156.0
 offset_bottom = 648.0
@@ -33,8 +42,10 @@ expand_mode = 3
 
 [node name="logo" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 119.0
+offset_top = 28.0
+offset_right = 327.0
+offset_bottom = 86.0
 scale = Vector2(8.10496, 8.59263)
 texture = ExtResource("2_d6472")
 expand_mode = 3
@@ -42,8 +53,11 @@ stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(1156, 648)
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_top = 250
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
