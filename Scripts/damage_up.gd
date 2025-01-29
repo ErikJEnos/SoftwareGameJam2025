@@ -1,5 +1,6 @@
 extends Node2D
-@onready var powerup: AudioStreamPlayer = $"../powerup"
+@onready var powerup: AudioStreamPlayer = $powerup
+
 
 var damageUp: float = 0.2
 func _on_area_2d_body_entered(body: Node2D) -> void:

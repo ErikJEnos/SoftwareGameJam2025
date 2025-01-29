@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj675klwkk02r"]
+[gd_scene load_steps=6 format=3 uid="uid://bj675klwkk02r"]
 
 [ext_resource type="Script" path="res://Scripts/fire_rate_up.gd" id="1_ho4ii"]
 [ext_resource type="Texture2D" uid="uid://dh1qgwfxytoto" path="res://Images/fire rate.png" id="2_6efge"]
+[ext_resource type="AudioStream" uid="uid://cfwddlaa4p0pj" path="res://Audio/powerUp.wav" id="3_fp72l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfh7"]
 radius = 90.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_36djq"]
+streams_count = 1
+stream_0/stream = ExtResource("3_fp72l")
 
 [node name="FireRateUp" type="Node2D"]
 script = ExtResource("1_ho4ii")
@@ -20,6 +25,11 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_0gfh7")
+
+[node name="powerup" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_36djq")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj3sgys5ssens"]
+[gd_scene load_steps=6 format=3 uid="uid://dj3sgys5ssens"]
 
 [ext_resource type="Script" path="res://Scripts/bullet_speed_up.gd" id="1_025dn"]
 [ext_resource type="Texture2D" uid="uid://dfj0rvbiw51qb" path="res://Images/bullet_speed_up.png" id="2_f7n8o"]
+[ext_resource type="AudioStream" uid="uid://cfwddlaa4p0pj" path="res://Audio/powerUp.wav" id="3_x2n2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfh7"]
 radius = 90.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iaapj"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("3_x2n2o")
 
 [node name="BulletSpeedUp" type="Node2D"]
 script = ExtResource("1_025dn")
@@ -19,5 +25,10 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 shape = SubResource("CircleShape2D_0gfh7")
+
+[node name="powerup" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_iaapj")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

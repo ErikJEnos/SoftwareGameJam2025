@@ -7,6 +7,10 @@ var canTakeDamage = true
 
 @onready var damagedBlock = $SpriteDamage
 @onready var animation = $AnimationPlayer
+@onready var blockhit: AudioStreamPlayer = $blockhit
+@onready var blockbreak: AudioStreamPlayer = $blockbreak
+@onready var enemy_shoot: AudioStreamPlayer = $enemyShoot
+
 
 var enemyBullet = preload("res://Prefabs/EnemyBullet.tscn")
 
@@ -29,6 +33,7 @@ func _ready() -> void:
 
 func RemoveHealth(damage: float) -> void:
 	if(canTakeDamage):
+		
 		health -= damage
 
 
@@ -36,6 +41,8 @@ func RemoveHealth(damage: float) -> void:
 			ShootAtPlayer()
 			modulate = Color(0.5, 0.5, 0.5)
 		else:
+			blockhit.play()
+			await blockhit.finished
 			damagedBlock.visible = true
 			GetHealthPer()
 			
@@ -58,6 +65,7 @@ func spawn_random_power_up():
 	call_deferred("_deferred_spawn_random_power_up")
 	
 func ShootAtPlayer():
+	#enemy_shoot.play() erik pls fix this
 	var bullet = enemyBullet.instantiate()
 	bullet.initialize(1, 300)
 	get_tree().root.add_child(bullet)
@@ -91,6 +99,8 @@ func GetHealthPer():
 
 func PlayAnimation(): 
 	if(not isEnemy):
+		blockbreak.play()
 		animation.play("Destroyed")
 	else:
+		#blockbreak.play() erik pls fix this
 		animation.play("BossDestroyed")

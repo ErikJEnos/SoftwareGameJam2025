@@ -1,5 +1,7 @@
 extends Node2D
-@onready var powerup: AudioStreamPlayer = $"../powerup"
+@onready var powerup: AudioStreamPlayer = $powerup
+
+
 
 var fireRateUp: float = 0.90
 

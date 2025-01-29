@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c86jcvgdk2sit"]
+[gd_scene load_steps=3 format=3 uid="uid://bmrcn3paug1bf"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_0wsox"]
+[ext_resource type="AudioStream" uid="uid://b4jhlggo64cat" path="res://Audio/blockbreak.wav" id="2_6ogy5"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_0wsox")
+
+[node name="blockbreak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6ogy5")
+bus = &"SFX"

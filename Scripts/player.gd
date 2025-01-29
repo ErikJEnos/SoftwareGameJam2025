@@ -11,6 +11,7 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @onready var shoot: AudioStreamPlayer = $"../shoot"
 @onready var playerhit: AudioStreamPlayer = $"../playerhit"
 
+
 var can_shoot = false
 @export var fireRate: float = 0.5
 var can_fire: bool = false  # Control firing rate
@@ -40,6 +41,8 @@ func _process(delta: float) -> void:
 func fire_bullet(target_position: Vector2) -> void:
 	if can_fire:
 		return 
+	shoot.play()
+	
 	
 	can_fire = true
 
