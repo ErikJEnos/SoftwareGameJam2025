@@ -24,7 +24,6 @@ func  _physics_process(delta: float) -> void:
 
 		line2D.default_color = Color.RED
 		
-		print(localColPoint)
 		laser.global_position.y = localColPoint.y
 		laserPivot.global_position.y = localColPoint.y
 		

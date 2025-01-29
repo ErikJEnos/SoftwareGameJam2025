@@ -5,12 +5,14 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @export var bulletSpeed: float = 300.0
 @export var bulletDamage: float = 5.0
 @export var bounceCount: int = 2
-@export var bulletCount: int = 1
+@export var bulletCount: int = 9
 @export var spreadAngle: float = 30  
 @export var health: float = 5  
 @onready var shoot: AudioStreamPlayer = $"../shoot"
 @onready var playerhit: AudioStreamPlayer = $"../playerhit"
 @onready var animation = $"../AnimationPlayer"
+
+var canBeHurt = true
 
 var can_shoot = false
 @export var fireRate: float = 0.5
@@ -95,4 +97,13 @@ func BulletCountUp() -> void:
 	bulletCount+=1 
 
 func RemovePlayerHealth(damage: float):
-	health -= damage
+	if canBeHurt:
+		animation.play("PlayerHit")
+		health -= damage
+	
+func CanBeHurt():
+	canBeHurt = !canBeHurt
+	print("canBeHurt: = ", canBeHurt)
+	
+func CheckHurt() -> bool:
+	return canBeHurt

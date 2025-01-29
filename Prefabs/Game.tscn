@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
 [ext_resource type="PackedScene" uid="uid://bj675klwkk02r" path="res://Prefabs/PowerUps/FireRateUp.tscn" id="4_1fc4n"]
-[ext_resource type="PackedScene" path="res://Prefabs/upgrade_panel.tscn" id="5_7k7dm"]
+[ext_resource type="PackedScene" uid="uid://reima7vk52fy" path="res://Prefabs/upgrade_panel.tscn" id="5_7k7dm"]
 [ext_resource type="PackedScene" uid="uid://g1flgwss31f3" path="res://Prefabs/PowerUps/DamageUp.tscn" id="5_o8vnx"]
 [ext_resource type="PackedScene" uid="uid://b6s71qcdpddci" path="res://Prefabs/enemy.tscn" id="6_4tlp6"]
-[ext_resource type="PackedScene" path="res://Prefabs/warning_circle.tscn" id="6_8luk1"]
+[ext_resource type="PackedScene" uid="uid://c1dnyjykbthle" path="res://Prefabs/warning_circle.tscn" id="6_8luk1"]
 [ext_resource type="PackedScene" uid="uid://dj3sgys5ssens" path="res://Prefabs/PowerUps/BulletSpeedUp.tscn" id="6_x3ltu"]
 [ext_resource type="PackedScene" uid="uid://cjuj1fh2t0xkt" path="res://scenes/settings.tscn" id="9_sgd13"]
 [ext_resource type="AudioStream" uid="uid://cfwddlaa4p0pj" path="res://Audio/powerUp.wav" id="10_q07mk"]

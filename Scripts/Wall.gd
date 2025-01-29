@@ -67,7 +67,7 @@ func spawn_random_power_up():
 func ShootAtPlayer():
 	#enemy_shoot.play() erik pls fix this
 	var bullet = enemyBullet.instantiate()
-	bullet.initialize(1, 300)
+	bullet.initialize(1, 300, self)
 	get_tree().root.add_child(bullet)
 
 	# Set bullet position to player's position
