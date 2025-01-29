@@ -10,7 +10,7 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @export var health: float = 5  
 @onready var shoot: AudioStreamPlayer = $"../shoot"
 @onready var playerhit: AudioStreamPlayer = $"../playerhit"
-
+@onready var animation = $"../AnimationPlayer"
 
 var can_shoot = false
 @export var fireRate: float = 0.5
@@ -18,6 +18,10 @@ var can_fire: bool = false  # Control firing rate
 
 var bullet_scene = preload("res://Prefabs/Bullet.tscn")
 var Bullet = "res://Scripts/Bullet.gd"
+
+func _ready() -> void:
+	animation.play("Idle")
+	pass # Replace with function body.
 
 
 func _process(delta: float) -> void:

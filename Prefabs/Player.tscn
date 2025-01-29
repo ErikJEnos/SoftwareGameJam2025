@@ -1,18 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://mqxnlf631dad"]
+[gd_scene load_steps=11 format=3 uid="uid://mqxnlf631dad"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_e23wc"]
-[ext_resource type="Texture2D" uid="uid://byu307smvmby3" path="res://Images/icon.svg" id="1_unjo6"]
+[ext_resource type="Texture2D" uid="uid://b7ll07mdp6lx4" path="res://Images/huracan.png" id="2_nsdxi"]
 [ext_resource type="Script" path="res://Scripts/CameraFollow.gd" id="3_apaky"]
 [ext_resource type="AudioStream" uid="uid://bfjs0pxl51kqu" path="res://Audio/laserShoot.wav" id="4_et7l7"]
 [ext_resource type="AudioStream" uid="uid://7exlsxohwq8n" path="res://Audio/hitHurt.wav" id="5_a40ur"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lkqy"]
-radius = 84.0536
+radius = 64.0312
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r85qd"]
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("4_et7l7")
+
+[sub_resource type="Animation" id="Animation_v1h4x"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_xe7nc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdwwb"]
+_data = {
+"Idle": SubResource("Animation_v1h4x"),
+"RESET": SubResource("Animation_xe7nc")
+}
 
 [node name="Player" type="Node2D" groups=["Player"]]
 light_mask = 5
@@ -24,7 +62,9 @@ collision_mask = 6
 script = ExtResource("1_e23wc")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_unjo6")
+position = Vector2(-3, -13)
+texture = ExtResource("2_nsdxi")
+hframes = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_3lkqy")
@@ -38,3 +78,8 @@ volume_db = 3.0
 
 [node name="playerhit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_a40ur")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vdwwb")
+}
