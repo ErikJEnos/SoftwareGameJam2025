@@ -1,16 +1,29 @@
-extends Control
+extends CanvasLayer
+
+
 @onready var texture_rect: TextureRect = $TextureRect
+@onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
+@onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
+@onready var MASTER_BUS_ID = AudioServer.get_bus_index("Master")
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var menu: Control = %Menu
+@export var paused = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func _process(delta: float):
+	if Input.is_action_just_pressed("ui_cancel"):
+		menu.visible = !menu.visible
+		#if paused == false:
+			#pause()
+			#
+	#look up how to properly pause game when menu open
+#func pause():
+	#if paused:
+		#Engine.time_scale = 1
+	#else:
+		#Engine.time_scale = 0
+	#paused = !paused
 
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
@@ -24,3 +37,17 @@ func _on_fullscreen_pressed() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_h_slider_changed(value):
+	AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(value))
+	AudioServer.set_bus_volume_db(SFX_BUS_ID, value == 1)
+
+func _on_music_slider_changed(value):
+	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(value))
+	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, value == 1)
+
+
+func _on_sfx_slider_changed(value):
+	AudioServer.set_bus_volume_db(MASTER_BUS_ID, linear_to_db(value))
+	AudioServer.set_bus_volume_db(MASTER_BUS_ID, value == 1)

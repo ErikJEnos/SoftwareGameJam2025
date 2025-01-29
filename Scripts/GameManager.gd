@@ -142,3 +142,6 @@ func BossIntroFlashing():
 	var _text = get_node("/root/GameNode/Label")
 	_text.text = "Boss Time"
 	pass
+
+
+	
