@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bidc55f52muga" path="res://Sprites/j1vql5h66qi51.jpg" id="3_ahapy"]
 
 [node name="Settings" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_cqqlb")
 
 [node name="Menu" type="Control" parent="."]
@@ -93,6 +94,7 @@ text = "Main Menu
 [node name="Button" type="Button" parent="Menu"]
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
 offset_left = 1079.0
 offset_top = 606.0
 offset_right = 1151.0
@@ -102,6 +104,7 @@ icon = ExtResource("2_yxliv")
 
 [node name="TextureRect" type="TextureRect" parent="Menu"]
 visible = false
+layout_mode = 0
 offset_left = 203.0
 offset_top = 8.0
 offset_right = 815.0
