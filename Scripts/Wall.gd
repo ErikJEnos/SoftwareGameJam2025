@@ -102,5 +102,5 @@ func PlayAnimation():
 		blockbreak.play()
 		animation.play("Destroyed")
 	else:
-		#blockbreak.play() erik pls fix this
+		blockbreak.play()
 		animation.play("BossDestroyed")
