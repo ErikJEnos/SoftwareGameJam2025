@@ -14,7 +14,7 @@ extends CanvasLayer
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	if Input.is_action_just_pressed("Esc"):
-		#menu.visible = !menu.visible
+		menu.visible = !menu.visible
 		get_tree().paused = !get_tree().paused
 		#if paused == false:
 			#pause()

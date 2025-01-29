@@ -140,3 +140,5 @@ stream = ExtResource("5_a40ur")
 libraries = {
 "": SubResource("AnimationLibrary_vdwwb")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="CharacterBody2D" method="_on_animation_player_animation_finished"]

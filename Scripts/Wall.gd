@@ -65,7 +65,7 @@ func spawn_random_power_up():
 	call_deferred("_deferred_spawn_random_power_up")
 	
 func ShootAtPlayer():
-	#enemy_shoot.play() erik pls fix this
+	enemy_shoot.play() 
 	var bullet = enemyBullet.instantiate()
 	bullet.initialize(1, 300, self)
 	get_tree().root.add_child(bullet)
