@@ -100,6 +100,7 @@ func BulletCountUp() -> void:
 
 func RemovePlayerHealth(damage: float):
 	if canBeHurt:
+		canBeHurt = false 
 		animation.play("PlayerHit")
 		healthbar.value = healthbar.value -1
 		health -= damage
