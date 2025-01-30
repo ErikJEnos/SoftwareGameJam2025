@@ -12,6 +12,8 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @onready var playerhit: AudioStreamPlayer = $"../playerhit"
 @onready var animation = $"../AnimationPlayer"
 
+@onready var healthbar: ProgressBar = $Camera2D/healthbar
+
 var canBeHurt = true
 
 var can_shoot = false
@@ -99,6 +101,7 @@ func BulletCountUp() -> void:
 func RemovePlayerHealth(damage: float):
 	if canBeHurt:
 		animation.play("PlayerHit")
+		healthbar.value = healthbar.value -1
 		health -= damage
 	
 func CanBeHurt():

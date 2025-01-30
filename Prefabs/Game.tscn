@@ -53,3 +53,4 @@ stream = ExtResource("10_q07mk")
 bus = &"SFX"
 
 [node name="Settings" parent="." instance=ExtResource("9_sgd13")]
+visible = false

@@ -6,33 +6,21 @@ extends CanvasLayer
 @onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 @onready var MASTER_BUS_ID = AudioServer.get_bus_index("Master")
 
-@onready var menu: Control = %Menu
+
 @export var paused = false
+@onready var settings: CanvasLayer = $"."
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	if Input.is_action_just_pressed("Esc"):
-		menu.visible = !menu.visible
+		settings.visible = !settings.visible
 		get_tree().paused = !get_tree().paused
-		#if paused == false:
-			#pause()
-			#
-	#look up how to properly pause game when menu open
-#func pause():
-	#if paused:
-		#Engine.time_scale = 1
-	#else:
-		#Engine.time_scale = 0
-	#paused = !paused
 
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
-
-func _on_button_pressed(): 
-	texture_rect.visible = !texture_rect.visible
 
 func _on_fullscreen_pressed() -> void:
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:

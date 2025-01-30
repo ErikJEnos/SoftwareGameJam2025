@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjuj1fh2t0xkt"]
+[gd_scene load_steps=2 format=3 uid="uid://cjuj1fh2t0xkt"]
 
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="1_cqqlb"]
-[ext_resource type="Texture2D" uid="uid://bhmlx1gl886s5" path="res://Sprites/button.png" id="2_yxliv"]
-[ext_resource type="Texture2D" uid="uid://bidc55f52muga" path="res://Sprites/j1vql5h66qi51.jpg" id="3_ahapy"]
 
 [node name="Settings" type="CanvasLayer"]
 process_mode = 3
@@ -10,7 +8,6 @@ script = ExtResource("1_cqqlb")
 
 [node name="Menu" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,30 +88,8 @@ layout_mode = 2
 text = "Main Menu
 "
 
-[node name="Button" type="Button" parent="Menu"]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 1)
-layout_mode = 0
-offset_left = 1079.0
-offset_top = 606.0
-offset_right = 1151.0
-offset_bottom = 678.0
-scale = Vector2(0.447973, 0.272658)
-icon = ExtResource("2_yxliv")
-
-[node name="TextureRect" type="TextureRect" parent="Menu"]
-visible = false
-layout_mode = 0
-offset_left = 203.0
-offset_top = 8.0
-offset_right = 815.0
-offset_bottom = 465.0
-scale = Vector2(1.34559, 1.38908)
-texture = ExtResource("3_ahapy")
-
 [connection signal="changed" from="Menu/HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_changed"]
 [connection signal="changed" from="Menu/HBoxContainer/VBoxContainer/musicSlider" to="." method="_on_music_slider_changed"]
 [connection signal="changed" from="Menu/HBoxContainer/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_changed"]
 [connection signal="pressed" from="Menu/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="Menu/HBoxContainer/VBoxContainer/main menu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="Menu/Button" to="." method="_on_button_pressed"]

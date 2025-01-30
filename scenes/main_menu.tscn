@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://csvygo5xkr28p"]
+[gd_scene load_steps=6 format=3 uid="uid://csvygo5xkr28p"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_6hteg"]
 [ext_resource type="Texture2D" uid="uid://ck28vff2wytan" path="res://Sprites/titlemetalslimehurricane.png" id="2_d6472"]
 [ext_resource type="Texture2D" uid="uid://bpao82mnfk8t2" path="res://Sprites/background1.png" id="2_pccrq"]
 [ext_resource type="AudioStream" uid="uid://dd63i40m13wwf" path="res://Audio/hurricanemenu.mp3" id="4_bmcgm"]
+[ext_resource type="PackedScene" uid="uid://cjuj1fh2t0xkt" path="res://scenes/settings.tscn" id="5_wgxrb"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(1156, 0)
@@ -95,6 +96,9 @@ stream = ExtResource("4_bmcgm")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
+
+[node name="Settings" parent="." instance=ExtResource("5_wgxrb")]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer2/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer2/HBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
