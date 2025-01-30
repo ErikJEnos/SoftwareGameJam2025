@@ -44,7 +44,8 @@ expand_mode = 1
 
 [node name="logo" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_right = 158.0
+offset_left = 331.0
+offset_right = 489.0
 offset_bottom = 44.0
 scale = Vector2(8.10496, 8.59263)
 texture = ExtResource("2_d6472")
