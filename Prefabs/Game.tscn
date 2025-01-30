@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdddiubm716bu"]
+[gd_scene load_steps=12 format=3 uid="uid://cdddiubm716bu"]
 
+[ext_resource type="Script" path="res://Prefabs/game.gd" id="1_j6nek"]
 [ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
 [ext_resource type="PackedScene" uid="uid://bj675klwkk02r" path="res://Prefabs/PowerUps/FireRateUp.tscn" id="4_1fc4n"]
 [ext_resource type="PackedScene" uid="uid://reima7vk52fy" path="res://Prefabs/upgrade_panel.tscn" id="5_7k7dm"]
@@ -16,6 +17,7 @@ font_size = 48
 [node name="GameNode" type="Node2D"]
 process_mode = 1
 position = Vector2(583, 342)
+script = ExtResource("1_j6nek")
 
 [node name="Player" parent="." instance=ExtResource("3_heauh")]
 position = Vector2(-590, -345)

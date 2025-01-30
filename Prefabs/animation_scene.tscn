@@ -67,7 +67,16 @@ _data = {
 }
 
 [node name="AnimationScene" type="Node2D"]
+position = Vector2(970, 509)
 script = ExtResource("1_2s783")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1782.0
+offset_top = -882.0
+offset_right = -1742.0
+offset_bottom = -842.0
+scale = Vector2(4108.78, 49.2376)
+color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="HoleInGroundt" type="Sprite2D" parent="."]
 position = Vector2(8, 454)
