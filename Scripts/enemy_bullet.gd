@@ -28,7 +28,7 @@ func fire(direction: Vector2) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("Hiting player")
+		body
 		if(body.CheckHurt()):
 			body.RemovePlayerHealth(damage)
 			queue_free()
