@@ -18,7 +18,7 @@ process_mode = 1
 position = Vector2(583, 342)
 
 [node name="Player" parent="." instance=ExtResource("3_heauh")]
-position = Vector2(-587, -342)
+position = Vector2(-590, -345)
 
 [node name="FireRateUp" parent="." instance=ExtResource("4_1fc4n")]
 position = Vector2(552, 569)

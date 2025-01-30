@@ -136,10 +136,10 @@ shape = SubResource("CircleShape2D_3lkqy")
 script = ExtResource("3_apaky")
 
 [node name="healthbar" type="ProgressBar" parent="CharacterBody2D/Camera2D"]
-offset_left = -922.0
-offset_top = -506.0
-offset_right = -404.0
-offset_bottom = -446.0
+offset_left = -602.0
+offset_top = -324.0
+offset_right = -84.0
+offset_bottom = -264.0
 theme_override_styles/background = SubResource("StyleBoxFlat_6anxu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5gmdp")
 max_value = 5.0
