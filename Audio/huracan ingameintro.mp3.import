@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxniqi4kfxoda"
+path="res://.godot/imported/huracan ingameintro.mp3-04c7c9a335480ae8fd7c9b64bb56e463.mp3str"
+
+[deps]
+
+source_file="res://Audio/huracan ingameintro.mp3"
+dest_files=["res://.godot/imported/huracan ingameintro.mp3-04c7c9a335480ae8fd7c9b64bb56e463.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

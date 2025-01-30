@@ -52,9 +52,9 @@ text = "Master Volume"
 
 [node name="HSlider" type="HSlider" parent="Menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-min_value = 1.0
-value = 69.0
-exp_edit = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="musicV" type="Label" parent="Menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -63,9 +63,9 @@ text = "Music Volume
 
 [node name="musicSlider" type="HSlider" parent="Menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-min_value = 1.0
-value = 69.0
-exp_edit = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="sfxV" type="Label" parent="Menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -74,9 +74,9 @@ text = "Sound Effects Volume
 
 [node name="SFXSlider" type="HSlider" parent="Menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-min_value = 1.0
-value = 69.0
-exp_edit = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="Fullscreen" type="Button" parent="Menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -89,7 +89,10 @@ text = "Main Menu
 "
 
 [connection signal="changed" from="Menu/HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_changed"]
+[connection signal="value_changed" from="Menu/HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="changed" from="Menu/HBoxContainer/VBoxContainer/musicSlider" to="." method="_on_music_slider_changed"]
+[connection signal="value_changed" from="Menu/HBoxContainer/VBoxContainer/musicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="changed" from="Menu/HBoxContainer/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_changed"]
+[connection signal="value_changed" from="Menu/HBoxContainer/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="Menu/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="Menu/HBoxContainer/VBoxContainer/main menu" to="." method="_on_main_menu_pressed"]

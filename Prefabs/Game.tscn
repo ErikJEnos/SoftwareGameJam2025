@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdddiubm716bu"]
+[gd_scene load_steps=13 format=3 uid="uid://cdddiubm716bu"]
 
-[ext_resource type="Script" path="res://Prefabs/game.gd" id="1_j6nek"]
 [ext_resource type="PackedScene" uid="uid://mqxnlf631dad" path="res://Prefabs/Player.tscn" id="3_heauh"]
 [ext_resource type="PackedScene" uid="uid://bj675klwkk02r" path="res://Prefabs/PowerUps/FireRateUp.tscn" id="4_1fc4n"]
 [ext_resource type="PackedScene" uid="uid://reima7vk52fy" path="res://Prefabs/upgrade_panel.tscn" id="5_7k7dm"]
@@ -9,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://c1dnyjykbthle" path="res://Prefabs/warning_circle.tscn" id="6_8luk1"]
 [ext_resource type="PackedScene" uid="uid://dj3sgys5ssens" path="res://Prefabs/PowerUps/BulletSpeedUp.tscn" id="6_x3ltu"]
 [ext_resource type="PackedScene" uid="uid://cjuj1fh2t0xkt" path="res://scenes/settings.tscn" id="9_sgd13"]
+[ext_resource type="AudioStream" uid="uid://dxniqi4kfxoda" path="res://Audio/huracan ingameintro.mp3" id="10_b1lki"]
 [ext_resource type="AudioStream" uid="uid://cfwddlaa4p0pj" path="res://Audio/powerUp.wav" id="10_q07mk"]
+[ext_resource type="AudioStream" uid="uid://nha803eabv5e" path="res://Audio/game segment.mp3" id="11_d615i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_abd1t"]
 font_size = 48
@@ -17,7 +18,6 @@ font_size = 48
 [node name="GameNode" type="Node2D"]
 process_mode = 1
 position = Vector2(583, 342)
-script = ExtResource("1_j6nek")
 
 [node name="Player" parent="." instance=ExtResource("3_heauh")]
 position = Vector2(-590, -345)
@@ -56,3 +56,14 @@ bus = &"SFX"
 
 [node name="Settings" parent="." instance=ExtResource("9_sgd13")]
 visible = false
+
+[node name="intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_b1lki")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_d615i")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

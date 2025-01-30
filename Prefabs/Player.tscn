@@ -135,6 +135,13 @@ shape = SubResource("CircleShape2D_3lkqy")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 script = ExtResource("3_apaky")
 
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D/Camera2D"]
+offset_left = -938.0
+offset_top = -523.0
+offset_right = -383.0
+offset_bottom = -438.0
+color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
 [node name="healthbar" type="ProgressBar" parent="CharacterBody2D/Camera2D"]
 offset_left = -919.0
 offset_top = -511.0
@@ -148,7 +155,7 @@ show_percentage = false
 
 [node name="shoot" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_r85qd")
-volume_db = 3.0
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="playerhit" type="AudioStreamPlayer" parent="."]
