@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var BlockCount: int = 20
+@export var BlockCount: int = 10
 
 var box_scene = preload("res://Prefabs/Box.tscn")
 
@@ -13,6 +13,8 @@ var enemyBox = preload("res://Prefabs/EnemyBox.tscn")
 @export var box_width: float = 60.0
 
 @export var eachLayer: Array = []
+
+@export var bullets: Array = []
 
 var inProgress = false
 
@@ -34,11 +36,10 @@ func calculate_num_boxes(radius: float, box_width: float) -> int:
 	return ceil(circumference / box_width)
 
 func spawn_boxes_in_circle():
-	SpawnBlocks(5, 6,"b1ffae")
-	SpawnEnemyBlocks(3, 15)
-	SpawnBlocks(5, 10, "1f51ff")
-	SpawnEnemyBlocks(3, 15)
-	SpawnBlocks(10, 20, "000000")
+	SpawnBlocks(5, 1,"b1ffae")
+	SpawnEnemyBlocks(3, 3)
+	SpawnBlocks(5, 4, "1f51ff")
+	SpawnEnemyBlocks(3, 8)
 
 
 func RemoveBlockFromCount() -> void :
@@ -67,7 +68,7 @@ func SpawnBlocks(_rows: int = 5, health: int = 5, _color: Color = "ffffff"):
 			box = box_scene.instantiate()
 			box.global_position = position
 			box.initialize(health, false, _color)
-				
+			print("SSS : ", box)
 			eachLayer[rowCount].append(box)
 			# Rotate the box to face the center
 			box.look_at(Vector2(0, 0))
@@ -96,6 +97,7 @@ func SpawnEnemyBlocks(_rows: int = 5, health: int = 5, _color: Color = "ffffff")
 			box.global_position = position
 			box.initialize(health, true, _color)
 			box.canTakeDamage = false
+			print("size: " , eachLayer.size())
 			eachLayer[rowCount].append(box)
 			
 			# Rotate the box to face the center
@@ -116,12 +118,12 @@ func Test():
 	
 	BlockCount = 10 
 	
-	print("Level Count: " , levelCount , " Size: ", eachLayer[levelCount].size())
+	
+	print("Level Count: " , levelCount , " : ", eachLayer.size() ," Size: ", eachLayer[levelCount].size() )
 	
 	for i in range(eachLayer[levelCount].size()):
 		if(eachLayer[levelCount][i] != null):
 			eachLayer[levelCount][i].PlayAnimation()
-			
 			await get_tree().create_timer(0.1).timeout
 	
 	levelCount = levelCount + 1
@@ -143,6 +145,40 @@ func BossIntroFlashing():
 	var _text = get_node("/root/GameNode/Label")
 	_text.text = "Boss Time"
 	pass
+	
+func ResetEverything():
+	for x in range(18):
+		for i in range(eachLayer[x].size()):
+				if(eachLayer[x][i] != null):
+					eachLayer[x][i].queue_free()
+	
+	RemoveAllbullets()
+	get_tree().reload_current_scene()
+	for i in range(eachLayer.size()):
+		eachLayer[i].clear()
+	
+	for i in range(18):
+		eachLayer.remove_at(0)
+	
+	levelCount = 0 
+	BlockCount = 10 
+	rowCount = 0
+	
+	radius = 100
+	num_boxes = calculate_num_boxes(100, 60)
+	spawn_boxes_in_circle()
+	
+
+	
+func getAllbullets(bull: RigidBody2D):
+	print()
+	bullets.append(bull)
+	
+func RemoveAllbullets():
+	for x in range(bullets.size()):
+		if(bullets[x] != null):
+			bullets[x].queue_free()
+	
 
 
 	

@@ -8,6 +8,10 @@ var collided_bodies: Array = []
 
 @onready var animation = $AnimationPlayer
 
+
+func _ready() -> void:
+	GameManager.getAllbullets(self)
+
 func initialize(_damage: float, _speed: float, _bounceCount: int):
 	speed = _speed
 	damage = _damage

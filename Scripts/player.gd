@@ -21,8 +21,9 @@ var canBeHurt = true
 var can_shoot = false
 @export var fireRate: float = 0.5
 var can_fire: bool = false  # Control firing rate
-
+@export var bullet_scene3 = null
 var bullet_scene = preload("res://Prefabs/Bullet.tscn")
+
 var Bullet = "res://Scripts/Bullet.gd"
 
 func _ready() -> void:
@@ -106,6 +107,10 @@ func RemovePlayerHealth(damage: float):
 		animation.play("PlayerHit")
 		healthbar.value = healthbar.value -1
 		health -= damage
+		if(health <= 0):
+			GameManager.ResetEverything()
+			
+		
 	
 func CanBeHurt():
 	canBeHurt = !canBeHurt
@@ -118,3 +123,8 @@ func CheckHurt() -> bool:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	animation.play("Idle")
 	pass # Replace with function body.
+	
+func _input(event:InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			print("do something")

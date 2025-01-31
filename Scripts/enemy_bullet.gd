@@ -11,6 +11,7 @@ func _ready() -> void:
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	add_child(timer) 
 	timer.start()
+	GameManager.getAllbullets(self)
 	pass # Replace with function body.
 
 func _on_timer_timeout():

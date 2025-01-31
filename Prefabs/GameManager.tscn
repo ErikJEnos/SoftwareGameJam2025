@@ -5,6 +5,7 @@
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_0wsox")
+eachLayer = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 
 [node name="blockbreak" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_6ogy5")
