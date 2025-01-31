@@ -3,7 +3,7 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 # Movement speed
 @export var speed: float = 400.0
 @export var bulletSpeed: float = 300.0
-@export var bulletDamage: float = 5.0
+@export var bulletDamage: float = 1.0
 @export var bounceCount: int = 2
 @export var bulletCount: int = 1
 @export var spreadAngle: float = 30  
@@ -11,6 +11,8 @@ extends CharacterBody2D  # Use KinematicBody2D for Godot 3.x
 @onready var shoot: AudioStreamPlayer = $"../shoot"
 @onready var playerhit: AudioStreamPlayer = $"../playerhit"
 @onready var animation = $"../AnimationPlayer"
+@onready var intro: AudioStreamPlayer = $intro
+@onready var music: AudioStreamPlayer = $music
 
 @onready var healthbar: ProgressBar = $Camera2D/healthbar
 
@@ -24,6 +26,7 @@ var bullet_scene = preload("res://Prefabs/Bullet.tscn")
 var Bullet = "res://Scripts/Bullet.gd"
 
 func _ready() -> void:
+	
 	animation.play("Idle")
 	pass # Replace with function body.
 
@@ -100,7 +103,6 @@ func BulletCountUp() -> void:
 
 func RemovePlayerHealth(damage: float):
 	if canBeHurt:
-		canBeHurt = false 
 		animation.play("PlayerHit")
 		healthbar.value = healthbar.value -1
 		health -= damage
