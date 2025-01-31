@@ -53,7 +53,7 @@ func RemoveHealth(damage: float) -> void:
 			PlayAnimation()
 
 func _deferred_spawn_random_power_up():
-	var random = randf_range(0, allPowerUps.size() + 30)
+	var random = randf_range(0, allPowerUps.size() + 50)
 	if(random <= allPowerUps.size()):
 		var power_up_scene = allPowerUps[random]
 		var power_up = power_up_scene.instantiate()

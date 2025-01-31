@@ -17,5 +17,3 @@ visible = false
 scale = Vector2(4, 4)
 collision_layer = 0
 collision_mask = 0
-health = 40.0
-maxHealth = 40.0

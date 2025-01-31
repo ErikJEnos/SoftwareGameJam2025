@@ -38,6 +38,7 @@ func spawn_boxes_in_circle():
 	SpawnEnemyBlocks(3, 15)
 	SpawnBlocks(5, 10, "1f51ff")
 	SpawnEnemyBlocks(3, 15)
+	SpawnBlocks(10, 20, "000000")
 
 
 func RemoveBlockFromCount() -> void :
