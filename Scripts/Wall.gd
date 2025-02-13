@@ -5,7 +5,7 @@ extends StaticBody2D
 @export var isEnemy: = false
 var canTakeDamage = true
 
-@onready var damagedBlock = $SpriteDamage
+@onready var damagedBlock = $Sprite2D
 @onready var animation = $AnimationPlayer
 @onready var blockhit: AudioStreamPlayer = $blockhit
 @onready var blockbreak: AudioStreamPlayer = $blockbreak
